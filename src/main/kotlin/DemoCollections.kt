@@ -13,16 +13,20 @@ data class Car(
 }
 
 fun main() {
-    val cars = listOf<Car>(
+    val cars = mutableListOf<Car>(
         Car("Ford", "B max", 2016, licensePlate = "L-768-JT"),
         Car("Ford", "focus", 2019, licensePlate = "T-975-SC"),
         Car("Ford", "focus", 2019, licensePlate = "t-975-sc"),
         Car("Toyota", "Yaris", 2019, licensePlate = "4-ZHK-03"),
         Car("Toyota", "Prius", 2019, licensePlate = "25-RSH-4"),
+        Car("Toyota", "Prius", 2019, licensePlate = "25-RSH-4"),
     )
     val uniqueCars = cars.toSet()
-
     println("The list contains ${cars.size} cars and ${uniqueCars.size} are unique cars.")
+
+    cars.removeAt(0)
+    println(cars.containsAll(uniqueCars))
+    println(uniqueCars.containsAll(cars))
 
     println("HashSet of all license plates:")
     val lincesPlates = HashSet<String>(cars.map { car -> car.licensePlate })
@@ -44,6 +48,6 @@ fun main() {
 
     println("-".repeat(80))
     println("All licensplate - car associations:")
-    val table2 = cars.associateBy { it.licensePlate }
+    val table2 = cars.groupBy { it.licensePlate }
     table2.entries.forEach(::println)
 }

@@ -13,7 +13,7 @@ data class Car(
 }
 
 fun main() {
-    val cars = mutableListOf<Car>(
+    val cars = listOf<Car>(
         Car("Ford", "B max", 2016, licensePlate = "L-768-JT"),
         Car("Ford", "focus", 2019, licensePlate = "T-975-SC"),
         Car("Ford", "focus", 2019, licensePlate = "t-975-sc"),
@@ -24,7 +24,6 @@ fun main() {
     val uniqueCars = cars.toSet()
     println("The list contains ${cars.size} cars and ${uniqueCars.size} are unique cars.")
 
-    cars.removeAt(0)
     println(cars.containsAll(uniqueCars))
     println(uniqueCars.containsAll(cars))
 
